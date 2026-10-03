@@ -1,0 +1,12 @@
+{
+  "name": "golden-ad-course",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev public --local --persist-to .wrangler/state",
+    "db:local": "wrangler d1 migrations apply golden-ad-course --local --persist-to .wrangler/state",
+    "db:remote": "wrangler d1 migrations apply golden-ad-course --remote",
+    "hash": "node scripts/hash-password.mjs"
+  },
+  "devDependencies": { "wrangler": "^4" }
+}

@@ -1,0 +1,10 @@
+# Copy to .dev.vars for local development (never commit .dev.vars)
+ANTHROPIC_API_KEY=
+RESEND_API_KEY=
+MAIL_FROM=אורין – מודעת הזהב <hello@example.com>
+PAYMENT_WEBHOOK_SECRET=local-test-secret
+PAYMENT_URL_TEMPLATE=
+ADMIN_EMAIL=orin@example.com
+ADMIN_PASSWORD_HASH=
+SITE_URL=http://localhost:8788
+WHATSAPP_GROUP_URL=

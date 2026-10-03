@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הקורס | מודעת הזהב</title>
+<link rel="stylesheet" href="/ds.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&amp;display=swap">
+<style>
+
+@font-face { font-family: "Ploni Yad"; src: url("/assets/fonts/acd569cc9c5d522e2011e3c30f0b9c1d.woff2") format("woff2"), url("/assets/fonts/acd569cc9c5d522e2011e3c30f0b9c1d.woff") format("woff"); font-weight: 100 900; font-display: swap; }
+:root { --color-bg: #FFF8F4; --color-text: #45464E; --color-accent: #B9504E; --color-accent-100: #FFEEE3; --color-accent-200: #FFD6BA; --color-accent-300: #F2B49C; --color-accent-400: #D9776F; --color-accent-600: #A44543; --color-accent-700: #933E3C; --color-accent-800: #6F2E2D; --color-accent-2: #BB9479; --color-accent-2-100: #E4F7F1; --color-accent-2-200: #DDF5EE; --color-accent-2-300: #C2EBDF; --color-accent-2-700: #7D5D47; --color-accent-2-800: #5F4636; --font-body: "Assistant", sans-serif; }
+html { direction: rtl; overflow-x: clip; }
+body { margin: 0; overflow-x: clip; background: var(--color-bg); color: var(--color-text); font-family: "Assistant", sans-serif; text-wrap: pretty; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+.btn { font-family: "Assistant", sans-serif; white-space: nowrap; }
+textarea::placeholder { color: #A9A7A6; opacity: 1; }
+@keyframes gdot { 0%,80%,100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+
+[hidden]{display:none!important}
+.pill{border-radius:999px;padding:10px 18px;font:inherit;font-size:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+.gbtn{display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:14px 26px;font-family:'Assistant',sans-serif;font-size:18px;font-weight:800;color:var(--color-text);background:var(--color-accent-2);box-shadow:var(--shadow-md);cursor:pointer;white-space:nowrap}
+.gbtn:hover{background:#C9A68D}.gbtn:active{background:var(--color-accent-2-700);color:var(--color-bg)}
+.gbtn img{width:32px;height:32px;border-radius:50%;border:2px solid var(--color-bg)}
+.imp{align-self:flex-start;display:flex;align-items:center;gap:8px;border:2px solid var(--color-accent-2);border-radius:999px;padding:10px 18px;font-family:'Assistant',sans-serif;font-size:15px;font-weight:700;color:var(--color-accent-2-800);cursor:pointer}
+.imp:hover{background:var(--color-accent-2-200)}
+.linkbtn{background:none;border:0;font:inherit;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+</style>
+</head>
+<body>
+<div dir="rtl" style="min-height:100vh;position:relative;isolation:isolate;overflow-x:clip;">
+  <nav class="nav" style="padding-inline:clamp(20px,5vw,72px);position:relative;z-index:2;">
+    <a href="/" class="nav-brand" style="margin-right:0;margin-left:auto;display:flex;align-items:center;text-decoration:none;"><img src="/assets/logo-dark.png" alt="Biz Doula" style="height:72px;width:auto;display:block;"></a>
+    <a href="#goldie">גולדי</a>
+    <a href="#" id="logout">יציאה</a>
+  </nav>
+  <div style="position:absolute;left:-160px;top:-200px;width:420px;height:420px;border-radius:50%;background:var(--color-accent-2-200);z-index:-1;pointer-events:none;"></div>
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(20px,4vw,56px) 64px;display:flex;flex-direction:column;gap:32px;">
+    <header style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <span id="hello" style="font-size:20px;font-weight:700;color:var(--color-accent-700);"></span>
+        <h1 style="font-family:'Ploni Yad','Assistant',sans-serif;font-weight:400;font-size:clamp(36px,4.6vw,58px);line-height:1.15;margin:0;">ברוכה הבאה לקורס <span style="color:#BB9479;">מודעת הזהב</span></h1>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:240px;flex:0 1 320px;">
+        <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;"><span>ההתקדמות שלך</span><span id="progress-label"></span></div>
+        <div style="height:12px;border-radius:999px;background:var(--color-accent-200);overflow:hidden;"><div id="progress-bar" style="height:100%;border-radius:999px;background:var(--color-accent);width:0;transition:width .4s;"></div></div>
+      </div>
+    </header>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:28px;align-items:start;">
+      <section style="display:flex;flex-direction:column;gap:20px;min-width:0;">
+        <div id="tabs" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+        <div id="video" style="border-radius:32px;overflow:hidden;aspect-ratio:16/9;background:var(--color-accent-2-200);position:relative;"></div>
+        <article id="chapter" style="background:var(--color-accent-100);border-radius:32px;padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:18px;"></article>
+        <section id="workbook" hidden style="background:var(--color-bg);border:2px solid var(--color-accent-200);border-radius:32px;padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:24px;"></section>
+        <a id="wa" href="#" target="_blank" rel="noopener" style="display:flex;gap:16px;align-items:center;background:var(--color-accent-2-100);border-radius:28px;padding:18px 24px;text-decoration:none;color:var(--color-text);">
+          <img src="/assets/doodle-flowers-trio.png" alt="" style="width:56px;flex:none;">
+          <span style="display:flex;flex-direction:column;gap:2px;"><strong style="font-size:18px;">קבוצת הליווי בווצאפ</strong><span style="font-size:15px;">נתקעת? שואלות שם ומקבלות מענה.</span></span>
+        </a>
+      </section>
+      <section id="goldie" style="background:var(--color-bg);border-radius:32px;box-shadow:var(--shadow-md);display:flex;flex-direction:column;height:min(780px,calc(100vh - 140px));min-height:560px;overflow:hidden;position:sticky;top:20px;">
+        <div style="display:flex;gap:14px;align-items:center;padding:20px 24px;background:#BB9479;color:#FFF8F4;">
+          <img src="/assets/goldie-avatar-brand.png" alt="גולדי" style="width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--color-bg);">
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0;">
+            <strong style="font-family:'Ploni Yad','Assistant',sans-serif;font-weight:400;font-size:28px;line-height:1.1;">גולדי</strong>
+            <span style="font-size:15px;font-weight:600;">סוכנת ה-AI שלך לתסריטים וקופי למודעת הזהב</span>
+          </div>
+          <button type="button" id="export2" class="linkbtn" style="margin-right:auto;color:#FFF8F4;">ייצוא לדוקס</button>
+          <button type="button" id="clear" class="linkbtn" style="color:#FFF8F4;">שיחה חדשה</button>
+        </div>
+        <div id="goldie-scroll" style="flex:1;overflow-y:auto;padding:20px 20px 8px;display:flex;flex-direction:column;gap:12px;"></div>
+        <form id="chat-form" style="display:flex;gap:10px;align-items:flex-end;padding:14px 16px 16px;border-top:1px solid var(--color-accent-200);">
+          <textarea id="draft" rows="2" placeholder="ספרי לגולדי על העסק שלך, או בקשי תסריט / קופי…" style="flex:1;resize:none;border:2px solid var(--color-accent-200);border-radius:22px;padding:12px 16px;font:inherit;font-size:16px;line-height:1.5;background:var(--color-bg);color:var(--color-text);outline-color:var(--color-accent);min-height:52px;max-height:140px;"></textarea>
+          <button type="submit" id="send" class="btn btn-primary" disabled style="font-size:16px;padding:14px 22px;">שליחה</button>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+<script type="module" src="/course.js"></script>
+</body>
+</html>

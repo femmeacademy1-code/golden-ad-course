@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ניהול | מודעת הזהב</title>
+<link rel="stylesheet" href="/ds.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&amp;display=swap">
+<style>
+
+@font-face { font-family: "Ploni Yad"; src: url("/assets/fonts/acd569cc9c5d522e2011e3c30f0b9c1d.woff2") format("woff2"), url("/assets/fonts/acd569cc9c5d522e2011e3c30f0b9c1d.woff") format("woff"); font-weight: 100 900; font-display: swap; }
+:root { --color-bg: #FFF8F4; --color-text: #45464E; --color-accent: #B9504E; --color-accent-100: #FFEEE3; --color-accent-200: #FFD6BA; --color-accent-300: #F2B49C; --color-accent-400: #D9776F; --color-accent-600: #A44543; --color-accent-700: #933E3C; --color-accent-800: #6F2E2D; --color-accent-2: #BB9479; --color-accent-2-100: #E4F7F1; --color-accent-2-200: #DDF5EE; --color-accent-2-300: #C2EBDF; --color-accent-2-700: #7D5D47; --color-accent-2-800: #5F4636; --font-body: "Assistant", sans-serif; }
+html { direction: rtl; overflow-x: clip; }
+body { margin: 0; overflow-x: clip; background: var(--color-bg); color: var(--color-text); font-family: "Assistant", sans-serif; text-wrap: pretty; }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+.btn { font-family: "Assistant", sans-serif; white-space: nowrap; }
+textarea::placeholder, input::placeholder { color: #A9A7A6; opacity: 1; }
+
+[hidden]{display:none!important}
+.pill{border-radius:999px;padding:8px 16px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;white-space:nowrap}
+.lbl{font-size:14px;font-weight:700}
+.field{display:flex;flex-direction:column;gap:6px}
+.ta{resize:vertical;border:2px solid var(--color-accent-200);border-radius:20px;padding:12px 16px;font:inherit;font-size:15px;line-height:1.6;background:var(--color-bg);color:var(--color-text);outline-color:var(--color-accent)}
+.stat{border-radius:28px;padding:22px 24px;display:flex;flex-direction:column;gap:6px}
+.stat span:first-child{font-size:16px;font-weight:700}
+.stat span:last-child{font-family:'Ploni Yad','Assistant',sans-serif;font-size:44px;line-height:1.1}
+.dlg{width:min(560px,100%);max-height:calc(100vh - 40px);overflow-y:auto;border-radius:32px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:16px;background:var(--color-bg)}
+.dlg h2{font-family:'Ploni Yad','Assistant',sans-serif;font-weight:400;font-size:32px;line-height:1.2;margin:0}
+</style>
+</head>
+<body>
+<div dir="rtl" style="min-height:100vh;position:relative;isolation:isolate;overflow-x:clip;">
+  <nav class="nav" style="padding-inline:clamp(20px,5vw,72px);position:relative;z-index:2;">
+    <a href="/" class="nav-brand" style="margin-right:0;margin-left:auto;display:flex;align-items:center;text-decoration:none;"><img src="/assets/logo-dark.png" alt="Biz Doula" style="height:64px;width:auto;display:block;"></a>
+    <a href="/course">דף הקורס</a>
+    <a href="/">דף המכירה</a>
+    <a href="#" id="logout" hidden>יציאה</a>
+  </nav>
+  <div style="position:absolute;left:-160px;top:-200px;width:420px;height:420px;border-radius:50%;background:var(--color-accent-2-200);z-index:-1;pointer-events:none;"></div>
+
+  <main id="login" hidden style="display:grid;place-items:center;padding:clamp(32px,6vw,72px) 20px;">
+    <form id="login-form" style="width:min(420px,100%);background:var(--color-bg);border-radius:32px;box-shadow:var(--shadow-md);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:16px;">
+      <h1 style="font-family:'Ploni Yad','Assistant',sans-serif;font-weight:400;font-size:36px;margin:0;">כניסת מנהלת</h1>
+      <div class="field"><label class="lbl" for="l-email">אימייל</label><input id="l-email" name="email" class="input" type="email" dir="ltr" autocomplete="username" style="border-radius:999px;text-align:right;"></div>
+      <div class="field"><label class="lbl" for="l-pass">סיסמה</label><input id="l-pass" name="password" class="input" type="password" dir="ltr" autocomplete="current-password" style="border-radius:999px;text-align:right;"></div>
+      <span id="l-err" style="font-size:14px;color:var(--color-accent-800);"></span>
+      <button type="submit" class="btn btn-primary btn-block">כניסה</button>
+    </form>
+  </main>
+
+  <main id="app" hidden style="max-width:1320px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(20px,4vw,56px) 72px;display:flex;flex-direction:column;gap:28px;">
+    <header style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <span style="font-size:20px;font-weight:700;color:var(--color-accent-700);">ניהול הקורס</span>
+        <h1 style="font-family:'Ploni Yad','Assistant',sans-serif;font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.15;margin:0;">התלמידות של מודעת הזהב</h1>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <button type="button" class="btn btn-ghost" id="b-settings">הגדרות</button>
+        <a class="btn btn-ghost" href="/api/admin/export.csv" style="text-decoration:none;">ייצוא לאקסל</a>
+        <button type="button" class="btn btn-secondary" id="b-sendall"></button>
+        <button type="button" class="btn btn-primary" id="b-add">הוספת תלמידה</button>
+      </div>
+    </header>
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+      <div class="stat" style="background:var(--color-accent-100);"><span>תלמידות רשומות</span><span id="s-total" style="color:var(--color-accent-700);"></span></div>
+      <div class="stat" style="background:var(--color-accent-2-100);"><span>קיבלו פרטי גישה</span><span id="s-access" style="color:var(--color-accent-2-800);"></span></div>
+      <div class="stat" style="background:var(--color-accent-100);"><span>התקדמות ממוצעת</span><span id="s-avg" style="color:var(--color-accent-700);"></span></div>
+      <div class="stat" style="background:var(--color-accent-2-100);"><span>סיימו את הקורס</span><span id="s-done" style="color:var(--color-accent-2-800);"></span></div>
+    </section>
+    <section style="background:var(--color-bg);border-radius:32px;box-shadow:var(--shadow-md);padding:clamp(18px,2.5vw,28px);display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;">
+        <div id="filters" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+        <input class="input" id="q" type="search" placeholder="חיפוש לפי שם, אימייל או טלפון" style="border-radius:999px;min-width:min(100%,280px);text-align:right;font-size:15px;">
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="table" style="width:100%;min-width:740px;font-size:15px;">
+          <thead><tr><th style="text-align:right;">תלמידה</th><th style="text-align:right;">נרשמה</th><th style="text-align:right;">גישה</th><th style="text-align:right;">התקדמות</th><th style="text-align:right;">דפי יצירה</th><th style="text-align:right;">פעילות אחרונה</th><th></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p id="norows" hidden style="text-align:center;padding:28px 0;margin:0;font-size:16px;opacity:0.8;">לא נמצאו תלמידות</p>
+      </div>
+    </section>
+  </main>
+  <div id="modal"></div>
+  <div id="toast" hidden style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:30;background:var(--color-text);color:var(--color-bg);border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;box-shadow:var(--shadow-lg);"></div>
+</div>
+<script type="module" src="/admin.js"></script>
+</body>
+</html>

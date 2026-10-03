@@ -1,0 +1,12 @@
+name = "golden-ad-course"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "golden-ad-course"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+SITE_URL = "https://REPLACE-WITH-YOUR-DOMAIN"
+PRICE_ILS = "440"
