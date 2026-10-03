@@ -5,8 +5,8 @@ pages_build_output_dir = "public"
 [[d1_databases]]
 binding = "DB"
 database_name = "golden-ad-course"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "beeb3215-f945-4be3-93ba-16a5c8f1d48b"
 
 [vars]
-SITE_URL = "https://REPLACE-WITH-YOUR-DOMAIN"
+SITE_URL = "https://golden-ad-course.pages.dev"
 PRICE_ILS = "440"
